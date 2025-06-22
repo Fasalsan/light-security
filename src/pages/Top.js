@@ -16,16 +16,30 @@ export default function Top() {
           Welcome to Our Website
         </h1> */}
 
-                <marquee className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg bg-blue-800 w-full text-center p-2">
-                    {/* សូមស្វាគមន៍មកកាន់គេហទំព័របស់យើង */}
-                    ទំនាក់ទំនង៖
+              <div className="overflow-hidden bg-blue-800 w-full">
+      <div
+        className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2"
+        style={{
+          animation: "marquee 30s linear infinite",
+        }}
+      >
+        ទំនាក់ទំនង៖ 081600062
+        <span className="text-red-500 px-2">|</span>
+        081600063
+        <span className="text-red-500 px-2">|</span>
+        081600064
+      </div>
 
-                    081600062
-                    <span className="text-red-500 px-2">  </span>
-                    081600063
-                    <span className="text-red-500 px-2">  </span>
-                    081600064
-                </marquee>
+      {/* Keyframes inside component */}
+      <style>
+        {`
+          @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+          }
+        `}
+      </style>
+    </div>
             </div>
         </div>
     );
