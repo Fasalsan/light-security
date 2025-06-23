@@ -13,7 +13,7 @@ export default function Card({ image, name, price, onView, className = "" }) {
         className="w-full h-56 object-cover rounded-xl mb-4"
       />
       <div className="flex justify-between items-start">
-        <h3 className="text-lg font-semibold text-gray-800 truncate">{name}</h3>
+        <h3 className="text-lg font-bold truncate">{name}</h3>
         <p className="text-red-600 font-bold text-xl mb-4">
           ${price?.toFixed(2)}
         </p>
