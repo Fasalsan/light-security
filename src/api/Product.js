@@ -1,7 +1,7 @@
 import React from "react";
-import light001 from "../assets/0831812.jpg"; // Adjust the path as necessary
-import light002 from "../assets/IMG_0088.jpg"; // Adjust the path as necessary
-import light003 from "../assets/71nTXV2YxYL.jpg"; // Adjust the path as necessary
+import light001 from "../assets/0831812.jpg";
+import light002 from "../assets/IMG_0088.jpg";
+import light003 from "../assets/71nTXV2YxYL.jpg";
 
 const Data = [
     {
@@ -9,6 +9,8 @@ const Data = [
         name: "ពិលភ្លឺខ្លាំង",
         price: 19.99,
         image: light001,
+        images: [light001, light002, light003],
+        description: "ពិលភ្លឺខ្លាំងនេះមានការរចនាដែលអាចបំភ្លឺបានយ៉ាងច្បាស់។ វាអាចប្រើប្រាស់បានសម្រាប់ការប្រមូលផ្តុំ និងការបង្ហាញពិធីជប់លៀង។",
     },
     {
         id: 2,

@@ -14,13 +14,13 @@ export default function Card({ image, name, price, onView, className = "" }) {
       />
       <div className="flex justify-between items-start">
         <h3 className="text-lg font-semibold text-gray-800 truncate">{name}</h3>
-        <p className="text-blue-600 font-bold text-xl mb-4">
+        <p className="text-red-600 font-bold text-xl mb-4">
           ${price?.toFixed(2)}
         </p>
       </div>
       <button
         onClick={onView}
-        className="w-full py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+        className="w-full py-2 bg-red-900 text-white rounded-xl hover:bg-red-700 transition"
       >
         មើលលម្អិត
       </button>

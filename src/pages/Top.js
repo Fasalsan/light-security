@@ -16,17 +16,17 @@ export default function Top() {
           Welcome to Our Website
         </h1> */}
 
-                <div className="overflow-hidden bg-blue-800 w-full">
+                <div className="overflow-hidden bg-red-900 w-full">
                     <div
-                        className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2"
+                        className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2 font-sans"
                         style={{
                             animation: "marquee 30s linear infinite",
                         }}
                     >
                         ទំនាក់ទំនង៖ 081600062
-                        <span className="text-red-500 px-2">|</span>
+                        <span className="text-white px-2">|</span>
                         081600063
-                        <span className="text-red-500 px-2">|</span>
+                        <span className="text-white px-2">|</span>
                         081600064
                     </div>
 
