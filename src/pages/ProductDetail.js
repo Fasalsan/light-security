@@ -55,6 +55,7 @@ export default function ProductDetail() {
             )}
 
             <p className="text-lg font-semibold text-gray-700 underline">តម្លៃ: ${product.price}</p>
+            <br />
             <p className="text-gray-700 mb-4">&gt; {product.description}</p>
 
         </div>
