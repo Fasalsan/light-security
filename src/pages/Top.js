@@ -23,7 +23,7 @@ export default function Top() {
                             animation: "marquee 30s linear infinite",
                         }}
                     >
-                        ទំនាក់ទំនង៖ 0816326687
+                        ទំនាក់ទំនង៖ 081632687
                         <span className="text-white px-2">|</span>
                         0975026561
                         <span className="text-white px-2">|</span>
