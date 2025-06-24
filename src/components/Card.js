@@ -10,7 +10,7 @@ export default function Card({ image, name, price, onView, className = "" }) {
       <img
         src={image}
         alt={name}
-        className="w-full h-56 object-cover rounded-xl mb-4"
+        className="w-full h-80 object-cover rounded-xl mb-4 transition-transform transform hover:scale-105"
       />
       <div className="flex justify-between items-start">
         <h3 className="text-lg font-extrabold text-black-800 truncate">{name}</h3>
