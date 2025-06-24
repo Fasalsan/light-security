@@ -12,7 +12,7 @@ export default function ProductList() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration (in ms)
+      duration: 100, // Animation duration (in ms)
       once: true,     // Whether animation should happen only once
     });
   }, []);
