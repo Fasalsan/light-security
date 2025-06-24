@@ -42,13 +42,13 @@ export default function ProductDetail() {
 
             {/* Additional Images */}
             {product.images && product.images.length > 1 && (
-                <div className="grid grid-cols-3 gap-2 mb-4">
+                <div className="grid grid-cols-3 gap-2 mb-4 items-center justify-center">
                     {product.images.map((img, index) => (
                         <img
                             key={index}
                             src={img}
                             alt={`${product.name} - ${index}`}
-                            className="h-24 object-cover rounded cursor-pointer hover:scale-105 transition"
+                            className="h-24 object-cover rounded cursor-pointer hover:scale-105 transition items-center justify-center"
                         />
                     ))}
                 </div>
