@@ -31,7 +31,7 @@ export default function ProductList() {
           <div
             key={product.id}
             data-aos="fade-up"
-            data-aos-delay={index * 100} // delay increases for each card
+            // data-aos-delay={index * 50} 
             data-aos-duration="800"
           >
             <Card
