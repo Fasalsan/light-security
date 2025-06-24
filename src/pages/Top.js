@@ -23,11 +23,11 @@ export default function Top() {
                             animation: "marquee 30s linear infinite",
                         }}
                     >
-                        ទំនាក់ទំនង៖ 081600062
+                        ទំនាក់ទំនង៖ 0816326687
                         <span className="text-white px-2">|</span>
-                        081600063
+                        0975026561
                         <span className="text-white px-2">|</span>
-                        081600064
+                        085546050
                     </div>
 
                     {/* Keyframes inside component */}

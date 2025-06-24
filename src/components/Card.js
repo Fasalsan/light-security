@@ -15,7 +15,7 @@ export default function Card({ image, name, price, onView, className = "" }) {
       <div className="flex justify-between items-start">
         <h3 className="text-lg font-extrabold text-black-800 truncate">{name}</h3>
         <p className="text-red-600 font-bold text-xl mb-4">
-          ${price?.toFixed(2)}
+        តម្លៃ : {price}$
         </p>
       </div>
       <button
