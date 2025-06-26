@@ -11,16 +11,15 @@ export default function ProductList() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Load selected category from location state if returning from detail
-  const initialCategory = location.state?.selectedCategory || "ទាំះអស់";
+  
+  const initialCategory = location.state?.selectedCategory || "ទាំងអស់";
   const [activeCategory, setActiveCategory] = useState(initialCategory);
 
-  // Extract unique categories
-  const categories = ["ទាំះអស់", ...new Set(data.map((p) => p.category))];
+  
+  const categories = ["ទាំងអស់", ...new Set(data.map((p) => p.category))];
 
-  // Filter products by active category
   const filteredProducts =
-    activeCategory === "ទាំះអស់"
+    activeCategory === "ទាំងអស់"
       ? data
       : data.filter((p) => p.category === activeCategory);
 

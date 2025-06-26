@@ -7,7 +7,7 @@ export default function ProductDetail() {
     const navigate = useNavigate();
 
     const product = location.state;
-    const fromCategory = product?.fromCategory || "All";
+    const fromCategory = product?.fromCategory || "ទាំងអស់";
 
     if (!product) {
         return (
@@ -37,18 +37,12 @@ export default function ProductDetail() {
             </button>
 
             <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
-            {/* {product.category && (
-                <p className="text-sm text-gray-500 mb-4">ប្រភេទ: {product.category}</p>
-            )} */}
-
-            {/* Main Image */}
             <img
                 src={product.image}
                 alt={product.name}
                 className="w-full max-h-[400px] object-cover mb-4 rounded"
             />
-
-            {/* Additional Images */}
+            
             {product.images?.length > 1 && (
                 <div className="grid grid-cols-3 gap-2 mb-4">
                     {product.images.map((img, index) => (
