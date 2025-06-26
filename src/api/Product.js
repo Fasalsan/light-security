@@ -228,7 +228,7 @@ const Data = [
         name: "ដំបងរលាស់",
         price: 12,
         image: pro26,
-        category: "ដំបងក្រលាស់"
+        category: "ដំបងរលាស់"
     },
     {
         id: 28,

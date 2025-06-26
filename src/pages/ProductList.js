@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -9,21 +9,29 @@ import Top from "./Top";
 
 export default function ProductList() {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [activeCategory, setActiveCategory] = useState("ទាំងអស់");
+  // Load selected category from location state if returning from detail
+  const initialCategory = location.state?.selectedCategory || "ទាំះអស់";
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
 
   // Extract unique categories
-  const categories = ["ទាំងអស់", ...new Set(data.map((p) => p.category))];
+  const categories = ["ទាំះអស់", ...new Set(data.map((p) => p.category))];
 
-  // Filter products based on selected category
+  // Filter products by active category
   const filteredProducts =
-    activeCategory === "ទាំងអស់"
+    activeCategory === "ទាំះអស់"
       ? data
       : data.filter((p) => p.category === activeCategory);
 
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
-  }, []);
+
+    // Clear state after reading
+    if (location.state?.selectedCategory) {
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   return (
     <div className="bg-gray-100 min-h-screen">
@@ -35,14 +43,14 @@ export default function ProductList() {
         </h1>
 
         {/* Tabs */}
-        <div className="flex flex-wrap gap-1 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-3 py-1 rounded-full text-sm font-medium border ${activeCategory === cat
-                  ? "bg-red-900 text-white"
-                  : "bg-white text-gray-700 hover:bg-red-50"
+                ? "bg-red-900 text-white"
+                : "bg-white text-gray-700 hover:bg-red-50"
                 }`}
             >
               {cat}
@@ -50,8 +58,8 @@ export default function ProductList() {
           ))}
         </div>
 
-        {/* Products */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {/* Product Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProducts.map((product, index) => (
             <div
               key={product.id}
@@ -63,7 +71,9 @@ export default function ProductList() {
                 name={product.name}
                 price={product.price}
                 onView={() =>
-                  navigate(`/product/${product.id}`, { state: product })
+                  navigate(`/product/${product.id}`, {
+                    state: { ...product, fromCategory: activeCategory },
+                  })
                 }
               />
             </div>
