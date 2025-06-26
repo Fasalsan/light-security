@@ -11,7 +11,7 @@ export default function Top() {
 
             <div className="absolute inset-0 bg-black/30  flex items-end justify-center">
 
-                <div className="overflow-hidden bg-red-900 w-full">
+                <div className="overflow-hidden bg-red-900 bg-opacity-20 w-full">
                     <div
                         className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2 font-sans"
                         style={{
