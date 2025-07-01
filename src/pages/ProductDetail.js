@@ -36,9 +36,15 @@ export default function ProductDetail() {
             </button>
 
             <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
-            {product.category && (
+            {/* {product.category && (
                 <p className="text-sm text-gray-500 mb-4">ប្រភេទ: {product.category}</p>
-            )}
+            )} */}
+
+
+            <div className="mb-4">
+                <label htmlFor="">ទំនាក់ទំនងតាមលេខ :</label>
+                <p className="text-gray-700 flex gap-2"><span>081632687</span><span> 081632687</span><span> 081632687</span></p>
+            </div>
 
             <img
                 src={product.image}
