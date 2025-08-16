@@ -16,7 +16,7 @@ export default function Card({ image, name, price, onView, className = "" }) {
       </div>
 
       {/* Info section */}
-      <div className="flex justify-between items-center px-2 py-4 bg-red-300">
+      <div className="flex justify-between items-center px-2 py-4">
         <h3
           className="text-lg font-bold text-black truncate"
           title={name}
