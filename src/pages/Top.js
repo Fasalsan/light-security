@@ -1,19 +1,32 @@
 import React from "react";
-import IMG_009 from "../assets/maxresdefault.jpg"; 
+import gifIcon from "../assets/gifIcon.gif";
+import { IoIosArrowForward } from "react-icons/io"; // Example icon
+
+import imagebg from "../assets/imagebg.png";
+
 export default function Top() {
     return (
-        <div className="relative w-full h-80 sm:h-60 md:h-80 lg:h-96 overflow-hidden">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[40rem] overflow-hidden">
+            {/* Background Image */}
             <img
-                src={IMG_009}
+                src={imagebg}
                 alt="Background"
                 className="w-full h-full object-cover"
             />
 
-            <div className="absolute inset-0 bg-black/30  flex items-end justify-center">
+            <div className="absolute top-1 left-4 text-red-700 text-3xl sm:text-4xl md:text-5xl">
+                <img
+                    src={gifIcon}
+                    alt="Background"
+                    className="h-32 sm:h-36 md:h-48 lg:h-64 xl:h-96 object-contain"
+                />
+            </div>
 
+            {/* Overlay Marquee */}
+            <div className="absolute inset-0 flex items-end justify-center">
                 <div className="overflow-hidden bg-red-900 bg-opacity-20 w-full">
                     <div
-                        className="text-white text-2xl sm:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2 font-sans"
+                        className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg whitespace-nowrap inline-block p-2 font-sans"
                         style={{
                             animation: "marquee 30s linear infinite",
                         }}
@@ -25,14 +38,14 @@ export default function Top() {
                         085546050
                     </div>
 
-                    {/* Keyframes inside component */}
+                    {/* Keyframes for marquee */}
                     <style>
                         {`
-          @keyframes marquee {
-            0% { transform: translateX(50%); }
-            100% { transform: translateX(-100%); }
-          }
-        `}
+              @keyframes marquee {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(-100%); }
+              }
+            `}
                     </style>
                 </div>
             </div>
