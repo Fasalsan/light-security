@@ -61,11 +61,10 @@ export default function ProductList() {
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
-              className={`px-4 py-3 rounded-full text-sm font-medium border ${
-                activeCategory === cat
+              className={`px-4 py-3 rounded-full text-sm font-medium border ${activeCategory === cat
                   ? "bg-red-900 text-white"
                   : "bg-white text-gray-700 hover:bg-red-50"
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -76,12 +75,10 @@ export default function ProductList() {
       {/* Product Cards */}
       <div className="px-4 mt-4">
         {loading ? (
-          // 👇 Spinner
           <div className="flex justify-center items-center h-64">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900"></div>
           </div>
         ) : filteredProducts.length === 0 ? (
-          // 👇 No products
           <div className="text-center text-gray-600 mt-10">
             មិនមានផលិតផលក្នុងប្រភេទនេះទេ
           </div>
@@ -97,6 +94,7 @@ export default function ProductList() {
                   image={product.image}
                   name={product.name}
                   price={product.price}
+                  className="h-full" // ensure card takes full height
                   onView={() =>
                     navigate(`/product/${product.id}`, {
                       state: {
