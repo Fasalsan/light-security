@@ -1,4 +1,3 @@
-import React from "react";
 import pro1 from "../assets/1108 Flash light.jpg"
 import pro2 from "../assets/1201 ពិលឆក់.jpg"
 import pro3 from "../assets/binoculars.jpg"
