@@ -155,7 +155,7 @@ const ProductDetail = ({ products }) => {
   if (!product) return <p className="p-6">Product not found</p>;
 
   return (
-    <div className="mx-auto relative">
+    <div className="mx-auto pb-4 relative">
       {/* Back Button */}
       <div>
         <div
