@@ -36,7 +36,9 @@ const Data = [
         name: "ពិលភ្លឺខ្លាំង Code: W591",
         price: 33,
         image: pro13,
-        category: "ពិលភ្លឺខ្លាំង"
+        oldPrice: 35,
+        category: "ពិលភ្លឺខ្លាំង",
+        subImage: ["https://ledsvet.si/wp-content/uploads/2024/02/0831802.jpg", "https://ledsvet.si/wp-content/uploads/2024/02/0831806.jpg", "https://ledsvet.si/wp-content/uploads/2024/02/0831810.jpg"],
     },
     {
         id: 2,

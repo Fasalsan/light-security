@@ -1,116 +1,85 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
+import ProductCard from "../components/ProductCard";
+import CategoryNavigation from "../components/CategoryNavigation";
+import Header from "../components/Header";
+import PromoBanner from "../components/PromoBanner";
+import { PulseLoader } from "react-spinners"; // import PulseLoader
+import { FaTelegramPlane } from "react-icons/fa"; // Telegram icon
 
-import Card from "../components/Card";
-import data from "../api/Product";
-import Top from "./Top";
-
-export default function ProductList() {
-  const navigate = useNavigate();
+const ProductList = ({ products }) => {
   const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const selectedCategory = params.get("category") || "ទាំងអស់";
 
-  const query = new URLSearchParams(location.search);
-  const initialCategory = query.get("category") || "ទាំងអស់";
-
-  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Extract unique categories
-  const categories = ["ទាំងអស់", ...new Set(data.map((p) => p.category))];
+  const productGridRef = useRef(null);
 
-  // Fake loading for UX
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 800); // short fake delay
+
+    const timer = setTimeout(() => {
+      const filtered =
+        selectedCategory === "ទាំងអស់"
+          ? products
+          : products.filter((p) => p.category === selectedCategory);
+
+      setFilteredProducts(filtered);
+      setLoading(false);
+
+      if (productGridRef.current) {
+        productGridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 500);
+
     return () => clearTimeout(timer);
-  }, [activeCategory]);
-
-  const filteredProducts =
-    activeCategory === "ទាំងអស់"
-      ? data
-      : data.filter((p) => p.category === activeCategory);
-
-  const handleCategoryChange = (cat) => {
-    setActiveCategory(cat);
-    navigate(`/?category=${encodeURIComponent(cat)}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
-
-  useEffect(() => {
-    AOS.refresh();
-  }, [activeCategory]);
+  }, [selectedCategory, products]);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <Top />
+    <div className="relative p-2">
+      <div className="max-w-[1200px] mx-auto">
+        <Header />
+        <PromoBanner />
 
-      {/* Sticky Tabs */}
-      <div className="sticky top-0 z-20 bg-gray-100 py-4 px-2">
-        <h1 className="text-xl font-serif font-bold mb-4 text-gray-800">
-          ប្រភេទពិលទាំងអស់
-        </h1>
-
-        <div className="flex flex-wrap gap-1">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => handleCategoryChange(cat)}
-              className={`px-4 py-3 rounded-full text-sm font-medium border ${
-                activeCategory === cat
-                  ? "bg-red-900 text-white"
-                  : "bg-white text-gray-700 hover:bg-red-50"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="my-4 sticky top-0 z-10 bg-white">
+          <CategoryNavigation />
         </div>
-      </div>
 
-      {/* Product Cards */}
-      <div className="px-4 mt-4">
         {loading ? (
-          // 👇 Spinner
           <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-900"></div>
-          </div>
-        ) : filteredProducts.length === 0 ? (
-          // 👇 No products
-          <div className="text-center text-gray-600 mt-10">
-            មិនមានផលិតផលក្នុងប្រភេទនេះទេ
+            <PulseLoader color="#2563eb" size={10} margin={3} />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-            {filteredProducts.map((product, index) => (
-              <div
-                key={product.id}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-              >
-                <Card
-                  image={product.image}
-                  name={product.name}
-                  price={product.price}
-                  onView={() =>
-                    navigate(`/product/${product.id}`, {
-                      state: {
-                        ...product,
-                        fromCategory: activeCategory,
-                      },
-                    })
-                  }
-                />
-              </div>
+          <div
+            ref={productGridRef}
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center"
+          >
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         )}
       </div>
+
+      {/* Telegram Button */}
+      {/* <a
+        href="https://t.me/yourusername" 
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-5 right-5 z-50 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform transform hover:scale-110 "
+      >
+        <FaTelegramPlane size={24} />
+      </a> */}
+      <button
+        onClick={() => alert("Telegram clicked!")}
+        className="fixed bottom-5 right-5 z-50 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110"
+      >
+        <FaTelegramPlane size={24} />
+      </button>
     </div>
   );
-}
+};
+
+export default ProductList;
