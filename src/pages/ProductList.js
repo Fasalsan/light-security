@@ -42,19 +42,20 @@ const ProductList = ({ products }) => {
     return () => clearTimeout(timer);
   }, [selectedCategory, products]);
 
-  // ✅ detect if sticky element is at top-0
   useEffect(() => {
     const handleScroll = () => {
       if (stickyRef.current) {
         const { top } = stickyRef.current.getBoundingClientRect();
-        setAtTop(top === 0);
+        // consider it at top if within 5px
+        setAtTop(top <= 5);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // check immediately
+    handleScroll(); // initial check
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
 
 
   return (
@@ -65,14 +66,15 @@ const ProductList = ({ products }) => {
           <PromoBanner />
         </div>
 
-        {/* ✅ sticky element changes bg if at top */}
         <div
           ref={stickyRef}
+          style={{ willChange: "transform" }}
           className={`my-4 sticky top-0 z-10 transition-colors duration-300 ${atTop ? "bg-white rounded-b-xl shadow-lg" : "bg-transparent"
             }`}
         >
           <CategoryNavigation />
         </div>
+
 
         {loading ? (
           <div className="flex justify-center items-center h-64">

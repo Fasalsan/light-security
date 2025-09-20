@@ -155,7 +155,7 @@ const ProductDetail = ({ products }) => {
   if (!product) return <p className="p-6">Product not found</p>;
 
   return (
-    <div className="mx-auto pb-4 relative">
+    <div className="mx-auto relative">
       {/* Back Button */}
       <div>
         <div
@@ -166,7 +166,7 @@ const ProductDetail = ({ products }) => {
         </div>
       </div>
 
-      <div className="bg-[#F3EFFF] min-h-screen">
+      <div className="bg-[#F3EFFF] min-h-screen pb-4">
         {/* Main Image */}
         <div className="flex flex-col gap-4">
           <div className="w-full h-72 flex justify-center items-center mb-4">
