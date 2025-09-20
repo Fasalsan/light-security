@@ -4,8 +4,9 @@ import ProductCard from "../components/ProductCard";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Header from "../components/Header";
 import PromoBanner from "../components/PromoBanner";
-import { PulseLoader } from "react-spinners"; // import PulseLoader
-import { FaTelegramPlane } from "react-icons/fa"; // Telegram icon
+import { PulseLoader } from "react-spinners";
+import { FaTelegramPlane } from "react-icons/fa";
+import TelegramButton from "../components/TelegramButton";
 
 const ProductList = ({ products }) => {
   const location = useLocation();
@@ -14,8 +15,10 @@ const ProductList = ({ products }) => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [atTop, setAtTop] = useState(false); // ✅ for detecting top-0
 
   const productGridRef = useRef(null);
+  const stickyRef = useRef(null); // ✅ reference to sticky element
 
   useEffect(() => {
     setLoading(true);
@@ -30,20 +33,48 @@ const ProductList = ({ products }) => {
       setLoading(false);
 
       if (productGridRef.current) {
-        productGridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        productGridRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }
     }, 500);
 
     return () => clearTimeout(timer);
   }, [selectedCategory, products]);
 
-  return (
-    <div className="relative p-2 bg-[#f2f3ff]">
-      <div className="max-w-[1200px] mx-auto">
-        <Header />
-        <PromoBanner />
+  // ✅ detect if sticky element is at top-0
+  useEffect(() => {
+    const handleScroll = () => {
+      if (stickyRef.current) {
+        const { top } = stickyRef.current.getBoundingClientRect();
+        setAtTop(top === 0);
+      }
+    };
 
-        <div className="my-4 sticky top-0 z-10">
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // check immediately
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const openTelegram = () => {
+    window.open("https://t.me/Electronic_sansan", "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <div className="relative bg-[#F3EFFF]">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="px-3">
+          <Header />
+          <PromoBanner />
+        </div>
+
+        {/* ✅ sticky element changes bg if at top */}
+        <div
+          ref={stickyRef}
+          className={`my-4 sticky top-0 z-10 transition-colors duration-300 ${atTop ? "bg-white rounded-b-xl shadow-lg" : "bg-transparent"
+            }`}
+        >
           <CategoryNavigation />
         </div>
 
@@ -54,7 +85,7 @@ const ProductList = ({ products }) => {
         ) : (
           <div
             ref={productGridRef}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-items-center px-3"
           >
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -64,20 +95,10 @@ const ProductList = ({ products }) => {
       </div>
 
       {/* Telegram Button */}
-      {/* <a
-        href="https://t.me/yourusername" 
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-transform transform hover:scale-110 "
-      >
-        <FaTelegramPlane size={24} />
-      </a> */}
-      <button
-        onClick={() => alert("Telegram clicked!")}
-        className="fixed bottom-5 right-5 z-50 bg-blue-500 hover:bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-transform transform hover:scale-110"
-      >
-        <FaTelegramPlane size={24} />
-      </button>
+      <div>
+        <TelegramButton />
+      </div>
+
     </div>
   );
 };
