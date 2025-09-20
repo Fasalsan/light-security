@@ -217,7 +217,7 @@ const ProductDetail = ({ products }) => {
             <div className="text-lg flex items-center gap-3">
               <LiaPhoneVolumeSolid className="text-3xl text-green-600" />
               <span>
-                081600062 / <span>081600062 /</span> <span>081600062</span>
+                081632687 / <span>085546050 /</span> <span>0975026561</span>
               </span>
             </div>
           </div>

@@ -4,14 +4,8 @@ import { FaTelegramPlane } from "react-icons/fa";
 const TelegramButton = () => {
     const openTelegram = () => {
         const telegramApp = "tg://resolve?domain=Electronic_sansan";
-
-        // Try to open the Telegram app
         window.location.href = telegramApp;
-
-
-
     };
-
     return (
         <button
             onClick={openTelegram}

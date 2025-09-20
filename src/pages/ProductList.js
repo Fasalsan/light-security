@@ -5,7 +5,6 @@ import CategoryNavigation from "../components/CategoryNavigation";
 import Header from "../components/Header";
 import PromoBanner from "../components/PromoBanner";
 import { PulseLoader } from "react-spinners";
-import { FaTelegramPlane } from "react-icons/fa";
 import TelegramButton from "../components/TelegramButton";
 
 const ProductList = ({ products }) => {
@@ -57,13 +56,10 @@ const ProductList = ({ products }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openTelegram = () => {
-    window.open("https://t.me/Electronic_sansan", "_blank", "noopener,noreferrer");
-  };
 
   return (
     <div className="relative bg-[#F3EFFF]">
-      <div className="max-w-[1200px] mx-auto">
+      <div className="max-w-[1024px] mx-auto mt-2">
         <div className="px-3">
           <Header />
           <PromoBanner />
@@ -85,7 +81,7 @@ const ProductList = ({ products }) => {
         ) : (
           <div
             ref={productGridRef}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 justify-items-center px-3"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center px-3"
           >
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
