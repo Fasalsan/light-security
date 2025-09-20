@@ -4,9 +4,9 @@ import imgBanner from "../assets/imgBanner.png"
 
 const PromoBanner = () => {
     return (
-        <div className="flex items-start justify-between bg-gradient-to-r from-blue-900 to-blue-400 rounded-2xl  py-2 pl-6 md:p-17 text-white">
+        <div className="flex items-start justify-between bg-gradient-to-r from-blue-900 to-blue-300 rounded-2xl  py-2 pl-6 md:p-17 text-white">
             {/* Left Content */}
-            <div className="mb-6 md:mb-0">
+            <div className=" pt-4">
                 <h1 className="sm:text-6xl text-5xl font-bold">
                     30<span className="text-white">%</span>
                     <span className="text-sm ml-1">OFF</span>
@@ -22,7 +22,7 @@ const PromoBanner = () => {
                 <img
                     src={imgBanner}
                     alt="Flashlight"
-                    className="w-60 "
+                    className="w-48 "
                 />
             </div>
         </div>

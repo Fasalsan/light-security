@@ -59,7 +59,7 @@ const ProductList = ({ products }) => {
 
   return (
     <div className="relative bg-[#F3EFFF]">
-      <div className="max-w-[1024px] mx-auto mt-2">
+      <div className="max-w-[1024px] mx-auto pt-2">
         <div className="px-3">
           <Header />
           <PromoBanner />
