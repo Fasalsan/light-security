@@ -10,7 +10,7 @@ const PromoBanner = () => {
                     30<span className="text-white">%</span>
                     <span className="text-sm ml-1">OFF</span>
                 </h1>
-                <p className="mt-4 text-[10px] sm:text-2xl leading-relaxed">
+                <p className="mt-4 text-[12px] sm:text-2xl leading-relaxed">
                     ហាងផ្តល់ជូនការបញ្ចុះតម្លៃពិសេស<br />
                     ត្រឹមតែសប្តាហ៍នេះប៉ុណ្ណោះ
                 </p>

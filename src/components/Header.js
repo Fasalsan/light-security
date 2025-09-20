@@ -16,7 +16,7 @@ const Header = () => {
                     </div>
 
                     <div>
-                        <h3 className='text-2xl font-semibold '>SAN SAN</h3>
+                        <h3 className='text-xl font-semibold '>SAN SAN</h3>
                         <p className='text-gray-400 text-sm '>Electronic store</p>
                     </div>
                 </div>
@@ -26,7 +26,7 @@ const Header = () => {
             <div className="flex items-center space-x-4">
                 {/* Phone Icon with Arrow */}
                 <div className="flex flex-col items-center space-y-1">
-                    <SlCallOut className="text-orange-500 text-3xl animate-bounce" />
+                    <SlCallOut className="text-orange-500 text-2xl animate-bounce" />
                 </div>
 
                 {/* Phone Numbers */}

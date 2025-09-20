@@ -38,12 +38,12 @@ const ProductList = ({ products }) => {
   }, [selectedCategory, products]);
 
   return (
-    <div className="relative p-2">
+    <div className="relative p-2 bg-[#f2f3ff]">
       <div className="max-w-[1200px] mx-auto">
         <Header />
         <PromoBanner />
 
-        <div className="my-4 sticky top-0 z-10 bg-white">
+        <div className="my-4 sticky top-0 z-10">
           <CategoryNavigation />
         </div>
 
