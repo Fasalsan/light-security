@@ -155,7 +155,7 @@ const ProductDetail = ({ products }) => {
   if (!product) return <p className="p-6">Product not found</p>;
 
   return (
-    <div className="mx-auto relative">
+    <div className="mx-auto max-w-[1024px] w-full relative">
       {/* Back Button */}
       <div>
         <div
@@ -252,7 +252,15 @@ const ProductDetail = ({ products }) => {
           />
 
           {/* Thumbnails in Preview (main + subImages) */}
-          <div className="flex gap-4 overflow-x-scroll">
+          <div
+            className="flex gap-4"
+            style={{
+              overflowX: "auto",
+              msOverflowStyle: "none",     // IE and Edge
+              scrollbarWidth: "none",      // Firefox
+              WebkitOverflowScrolling: "touch"
+            }}
+          >
             {[product.image, ...subImages].map((img, idx) => (
               <img
                 key={idx}
@@ -261,12 +269,13 @@ const ProductDetail = ({ products }) => {
                 className={`w-24 h-24 object-contain rounded cursor-pointer border-2 ${previewImage === img ? "border-blue-500" : "border-gray-200"
                   }`}
                 onClick={(e) => {
-                  e.stopPropagation(); // prevent closing modal
+                  e.stopPropagation();
                   setPreviewImage(img);
                 }}
               />
             ))}
           </div>
+
         </div>
       )}
     </div>
