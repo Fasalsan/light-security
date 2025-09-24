@@ -59,7 +59,7 @@ const ProductList = ({ products }) => {
 
 
   return (
-    <div className="relative bg-[#F3EFFF]">
+    <div className="relative bg-[#eef0f2]">
       <div className="max-w-[1024px] mx-auto pt-2">
         <div className="px-3">
           <Header />
@@ -83,7 +83,7 @@ const ProductList = ({ products }) => {
         ) : (
           <div
             ref={productGridRef}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center px-3"
+            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center px-3"
           >
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
