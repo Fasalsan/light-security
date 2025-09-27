@@ -15,8 +15,8 @@ const ProductCard = ({ product }) => {
   return (
     <div
       className="bg-white rounded-xl overflow-hidden p-4 flex flex-col
-                 w-full min-w-[160px] shadow-md transition-shadow duration-300 ease-in-out 
-                 hover:shadow-xl group"
+                 w-full min-w-[160px]  duration-300 ease-in-out 
+                 group border"
     >
       {/* Image */}
       <div className="w-full h-40 overflow-hidden rounded-md">

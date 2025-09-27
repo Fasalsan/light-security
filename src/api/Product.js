@@ -29,6 +29,9 @@ import pro28 from "../assets/ពិលបន្តោងសោឆក់.jpg";
 import pro29 from "../assets/ស្គែនអាវុធ ឬជាតិដែក.jpg";
 import pro30 from "../assets/ឡាស៊ែរបញ្ចាំងឆេះ.jpg";
 import pro31 from "../assets/YD-899T.jpg";
+import sub1 from "../assets/imageSubProduct/sub1.jpg"
+import sub2 from "../assets/imageSubProduct/sub2.jpg"
+import sub3 from "../assets/imageSubProduct/sub3.jpg"
 
 const Data = [
     {
@@ -40,9 +43,9 @@ const Data = [
         category: "ពិលភ្លឺខ្លាំង",
         description: "ពិលនេះមានពន្លឺខ្លាំង អាចបំភ្លឺឆ្ងាយបាន សាកសមសម្រាប់ការប្រើប្រាស់ពេលយប់ និងសកម្មភាពក្រៅផ្ទះ។",
         subImage: [
-            "https://ledsvet.si/wp-content/uploads/2024/02/0831802.jpg",
-            "https://ledsvet.si/wp-content/uploads/2024/02/0831806.jpg",
-            "https://ledsvet.si/wp-content/uploads/2024/02/0831810.jpg"
+            sub1,
+            sub2,
+            sub3
         ],
     },
     {

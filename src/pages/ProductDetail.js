@@ -135,7 +135,7 @@
 
 import React, { useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { MdArrowBackIos } from "react-icons/md";
+import { IoMdArrowBack } from "react-icons/io";
 import { LiaPhoneVolumeSolid } from "react-icons/lia";
 
 const ProductDetail = ({ products }) => {
@@ -162,11 +162,11 @@ const ProductDetail = ({ products }) => {
           onClick={() => navigate(`/?category=${category}`)}
           className="flex items-center justify-center absolute top-0 p-3 mt-2 ml-2 bg-gray-200 rounded-full shadow-lg cursor-pointer"
         >
-          <MdArrowBackIos className="text-xl" />
+          <IoMdArrowBack className="text-xl" />
         </div>
       </div>
 
-      <div className="bg-[#F3EFFF] min-h-screen pb-4">
+      <div className="bg-white min-h-screen pb-4">
         {/* Main Image */}
         <div className="flex flex-col gap-4">
           <div className="w-full h-72 flex justify-center items-center mb-4">
