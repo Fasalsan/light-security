@@ -3,51 +3,55 @@ import React from 'react';
 import { SlCallOut } from "react-icons/sl";
 
 import logos from "../assets/logos.jpg"
+import callIcon from "../assets/icon/call.gif"
 
 const Header = () => {
     return (
-        <header className="flex justify-between items-center mb-3">
 
-            {/* Logo Section */}
-            <div className="flex items-center">
-                <div className='flex gap-2 items-center'>
-                    <div className="w-24 h-24">
-                        <img src={logos} alt="" className='rounded-full w-full h-full object-cover' />
-                    </div>
-
-                    <div>
-                        <h3 className='text-xl font-semibold '>SAN SAN</h3>
-                        <p className='text-gray-400 text-sm '>Electronic store</p>
-                    </div>
+        <div>
+            {/* Phone Section - Mobile (Top) */}
+            <div className="flex md:hidden w-full h-10 bg-blue-600 items-center font-semibold text-lg gap-1 justify-center text-white">
+                <div className="flex flex-col items-center space-y-1 w-[10%]">
+                    <img src={callIcon} alt="Call" />
                 </div>
+                <p className="gradient-text">081632687</p>/
+                <p className="gradient-text">0975026561</p>/
+                <p className="gradient-text">085546050</p>
             </div>
 
-            {/* Phone Section */}
-            <div className="flex items-center space-x-4">
-                {/* Phone Icon with Arrow */}
-                <div className="flex flex-col items-center space-y-1">
-                    <SlCallOut className="text-orange-500 text-2xl animate-bounce" />
+            {/* Header Section */}
+            <header className="flex w-full justify-between items-center mb-3 px-3">
+                {/* Logo Section */}
+                <div className="flex items-center">
+                    <div className="flex gap-2 items-center">
+                        <div className="w-24 h-24">
+                            <img
+                                src={logos}
+                                alt="Logo"
+                                className="rounded-full w-full h-full object-cover"
+                            />
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-semibold">SAN SAN</h3>
+                            <p className="text-gray-400 text-xs">@Electronic-store</p>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Phone Numbers */}
-                <div className="text-start text-blue-900 text-[18px]  leading-snug" style={{
-                    animation: 'colorChange 40s infinite',
-                }}>
-                    <p>081632687</p>
-                    <p>0975026561</p>
-                    <p>085546050</p>
-                    <style>
-                        {`
-          @keyframes colorChange {
-            0%, 100% { color: #fc7600; }
-            50% { color: #2600fc; }
-            100% { color: #fc0000; }
-          }
-        `}
-                    </style>
+                <div className="hidden md:flex items-center justify-end gap-4">
+                    <div className="flex flex-col items-center space-y-1 w-[12%]">
+                        <img src={callIcon} alt="Call" />
+                    </div>
+
+                    <div className="text-start text-[18px] leading-snug gradient-text">
+                        <p>081632687</p>
+                        <p>0975026561</p>
+                        <p>085546050</p>
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </div>
+
     );
 };
 
