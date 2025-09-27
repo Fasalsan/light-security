@@ -30,7 +30,7 @@ const PromoBanner = () => {
             </div>
 
             {/* Right Image Auto Slider */}
-            <div className="relative w-52 h-52">
+            <div className="relative w-48 h-48">
                 <Swiper
                     modules={[Autoplay]}
                     autoplay={{ delay: 5000, disableOnInteraction: false }}
