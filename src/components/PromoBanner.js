@@ -16,7 +16,7 @@ const images = [img1, img2, img3, img4, img5];
 
 const PromoBanner = () => {
     return (
-        <div className="flex items-start justify-between bg-gradient-to-r from-blue-900 to-blue-300 rounded-2xl pb-2 pl-6 md:p-8 text-white mx-3">
+        <div className="flex items-start justify-between bg-gradient-to-r from-blue-900 to-blue-300 rounded-2xl pb-2 pl-4 md:p-8 text-white mx-3">
             {/* Left Content */}
             <div className="pt-4">
                 <h1 className="sm:text-6xl text-5xl font-bold">
