@@ -16,14 +16,14 @@ const ProductCard = ({ product }) => {
     <div
       className="bg-white rounded-xl overflow-hidden p-4 flex flex-col
                  w-full min-w-[160px]  duration-300 ease-in-out 
-                 group border"
+                 group border hover:shadow-lg"
     >
       {/* Image */}
       <div className="w-full h-40 overflow-hidden rounded-md">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-contain transition-transform duration-300 ease-in-out group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
         />
       </div>
 
@@ -55,7 +55,7 @@ const ProductCard = ({ product }) => {
       {/* Button */}
       <button
         onClick={handleViewDetail}
-        className="mt-3 bg-blue-800 text-white text-sm px-4 py-2 rounded-md font-medium hover:bg-blue-900 w-full"
+        className="mt-3 bg-blue-800 text-white text-sm px-4 py-2 rounded-full font-medium hover:bg-blue-900 w-full"
       >
         មើលលម្អិត
       </button>
