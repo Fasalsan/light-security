@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css"; // ✅ Import AOS CSS
+
 import ProductCard from "../components/ProductCard";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Header from "../components/Header";
@@ -14,11 +17,21 @@ const ProductList = ({ products }) => {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [atTop, setAtTop] = useState(false); // ✅ for detecting top-0
+  const [atTop, setAtTop] = useState(false);
 
   const productGridRef = useRef(null);
-  const stickyRef = useRef(null); // ✅ reference to sticky element
+  const stickyRef = useRef(null);
 
+  // ✅ Initialize AOS once
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  }, []);
+
+  // ✅ Filter products and trigger AOS refresh
   useEffect(() => {
     setLoading(true);
 
@@ -37,46 +50,46 @@ const ProductList = ({ products }) => {
           block: "start",
         });
       }
+
+      AOS.refresh();
     }, 500);
 
     return () => clearTimeout(timer);
   }, [selectedCategory, products]);
 
+  // ✅ Sticky bar shadow when scrolled
   useEffect(() => {
     const handleScroll = () => {
       if (stickyRef.current) {
         const { top } = stickyRef.current.getBoundingClientRect();
-        // consider it at top if within 5px
         setAtTop(top <= 5);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
-
   return (
-    // <div className="relative bg-[#eef0f2]">
     <div className="relative bg-white">
       <div className="max-w-[1024px] mx-auto">
-        <div >
+        {/* Header + Banner */}
+        <div>
           <Header />
           <PromoBanner />
         </div>
 
+        {/* Category Bar */}
         <div
           ref={stickyRef}
-          style={{ willChange: "transform" }}
-          className={`my-4 sticky top-0 z-10 transition-colors duration-300 ${atTop ? " rounded-b-xl shadow-lg" : "bg-transparent"
-            }`}
+          className={`my-4 sticky top-0 z-10 transition-all duration-300 ${
+            atTop ? "rounded-b-xl shadow-lg " : "bg-transparent"
+          }`}
         >
           <CategoryNavigation />
         </div>
 
-
+        {/* Product Grid */}
         {loading ? (
           <div className="flex justify-center items-center h-64">
             <PulseLoader color="#2563eb" size={10} margin={3} />
@@ -84,20 +97,34 @@ const ProductList = ({ products }) => {
         ) : (
           <div
             ref={productGridRef}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 justify-items-center px-3"
+            className="
+              grid 
+              grid-cols-2 
+              sm:grid-cols-2 
+              md:grid-cols-3 
+              lg:grid-cols-4 
+              gap-3 
+              justify-items-center 
+              px-3 
+              pb-10
+            "
           >
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+            {filteredProducts.map((product, index) => (
+              <div
+                key={product.id}
+                data-aos="zoom-in"
+                data-aos-delay={index * 50} // small delay per card
+                className="w-full flex justify-center"
+              >
+                <ProductCard product={product} />
+              </div>
             ))}
           </div>
         )}
       </div>
 
       {/* Telegram Button */}
-      <div>
-        <TelegramButton />
-      </div>
-
+      <TelegramButton />
     </div>
   );
 };

@@ -41,7 +41,7 @@ const CategoryNavigation = () => {
   };
 
   return (
-    <div className="flex overflow-x-auto space-x-6 px-3 py-3 scrollbar-hide bg-white/30 backdrop-blur-sm">
+    <div className="flex overflow-x-auto space-x-6 px-3 py-3 scrollbar-hide bg-white/30 backdrop-blur-sm" data-aos="flip-up">
       {menuItems.map((item) => {
         const isActive = activeCategory === item.label;
 
@@ -53,19 +53,17 @@ const CategoryNavigation = () => {
           >
             <div
               className={`w-16 h-16 flex items-center justify-center rounded-full transition-transform duration-200 ease-in-out
-                ${
-                  isActive
-                    ? "bg-blue-800 text-white scale-105"
-                    : "bg-white/30 backdrop-blur-sm text-black shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] hover:scale-105 active:scale-95"
+                ${isActive
+                  ? "bg-blue-800 text-white scale-105"
+                  : "bg-white/30 backdrop-blur-sm text-black shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] hover:scale-105 active:scale-95"
                 }`}
             >
               {isActive ? item.activeIcon : item.icon}
             </div>
 
             <span
-              className={`text-sm font-medium transition-colors duration-200 ${
-                isActive ? "text-blue-800" : "text-black"
-              }`}
+              className={`text-sm font-medium transition-colors duration-200 ${isActive ? "text-blue-800" : "text-black"
+                }`}
             >
               {item.label}
             </span>

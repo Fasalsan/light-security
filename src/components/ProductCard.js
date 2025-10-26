@@ -52,12 +52,15 @@ const ProductCard = ({ product }) => {
         </div>
 
         {/* Button */}
-        <button
-          onClick={handleViewDetail}
-          className="mt-3 bg-blue-800 text-white text-sm px-4 py-2 rounded-full font-medium hover:bg-blue-900 w-full active:scale-95 transition-transform duration-200 ease-in-out"
-        >
-          មើលលម្អិត
-        </button>
+ <button
+  onClick={handleViewDetail}
+  className="mt-3 bg-blue-800 text-white text-sm px-4 py-2 rounded-full font-medium 
+             hover:bg-blue-900 w-full active:scale-95 
+             transition-all duration-300 ease-in-out hover:scale-105 "
+>
+  មើលលម្អិត
+</button>
+
       </div>
     </div>
   );

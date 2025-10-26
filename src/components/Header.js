@@ -10,7 +10,9 @@ const Header = () => {
 
         <div>
             {/* Phone Section - Mobile (Top) */}
-            <div className="flex md:hidden w-full h-10 bg-blue-600 items-center font-semibold text-sm gap-1 justify-center text-white px-1">
+            <div className="flex md:hidden w-full h-10 bg-blue-600 items-center font-semibold text-sm gap-1 justify-center text-white px-1" data-aos="flip-up"
+                data-aos-offset="300"
+                data-aos-easing="ease-in-sine">
                 <div className="flex flex-col items-center space-y-1 w-[10%]">
                     <img src={callIcon} alt="Call" />
                 </div>
