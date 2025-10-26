@@ -70,7 +70,7 @@ const ProductList = ({ products }) => {
         <div
           ref={stickyRef}
           style={{ willChange: "transform" }}
-          className={`my-4 sticky top-0 z-10 transition-colors duration-300 ${atTop ? "bg-white rounded-b-xl shadow-lg" : "bg-transparent"
+          className={`my-4 sticky top-0 z-10 transition-colors duration-300 ${atTop ? " rounded-b-xl shadow-lg" : "bg-transparent"
             }`}
         >
           <CategoryNavigation />

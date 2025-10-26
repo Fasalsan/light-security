@@ -1,6 +1,5 @@
 import React from "react";
 import gifIcon from "../assets/gifIcon.gif";
-import { IoIosArrowForward } from "react-icons/io"; // Example icon
 
 import imagebg from "../assets/imagebg.png";
 

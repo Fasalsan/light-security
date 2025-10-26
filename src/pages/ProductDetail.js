@@ -23,12 +23,12 @@ const ProductDetail = ({ products }) => {
     <div className="mx-auto max-w-[1024px] w-full relative">
       {/* Back Button */}
       <div>
-        <div
+        <button
           onClick={() => navigate(`/?category=${category}`)}
-          className="flex items-center justify-center absolute top-0 p-3 mt-2 ml-2 bg-gray-200 rounded-full shadow-lg cursor-pointer"
+          className="flex items-center justify-center absolute top-0 p-3 mt-2 ml-2 bg-gray-200 rounded-full shadow-lg cursor-pointer active:scale-95 transition-transform duration-200 ease-in-out"
         >
           <IoMdArrowBack className="text-xl" />
-        </div>
+        </button>
       </div>
 
       <div className="bg-white min-h-screen pb-4">
