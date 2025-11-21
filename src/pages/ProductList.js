@@ -35,26 +35,26 @@ const ProductList = ({ products }) => {
   useEffect(() => {
     setLoading(true);
 
-    const timer = setTimeout(() => {
-      const filtered =
-        selectedCategory === "ទាំងអស់"
-          ? products
-          : products.filter((p) => p.category === selectedCategory);
+    const filtered =
+      selectedCategory === "ទាំងអស់"
+        ? products
+        : products.filter((p) => p.category === selectedCategory);
 
-      setFilteredProducts(filtered);
-      setLoading(false);
+    setFilteredProducts(filtered);
+    setLoading(false);
 
-      if (productGridRef.current) {
-        productGridRef.current.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+    if (productGridRef.current) {
+      productGridRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
 
+    // Small delay to ensure DOM is updated before AOS refresh
+    setTimeout(() => {
       AOS.refresh();
-    }, 500);
+    }, 100);
 
-    return () => clearTimeout(timer);
   }, [selectedCategory, products]);
 
   // ✅ Sticky bar shadow when scrolled
@@ -72,7 +72,7 @@ const ProductList = ({ products }) => {
 
   return (
     <div className="relative bg-white">
-      <div className="max-w-[1024px] mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header + Banner */}
         <div>
           <Header />
@@ -82,9 +82,8 @@ const ProductList = ({ products }) => {
         {/* Category Bar */}
         <div
           ref={stickyRef}
-          className={`my-4 sticky top-0 z-10 transition-all duration-300 ${
-            atTop ? "rounded-b-xl shadow-lg " : "bg-transparent"
-          }`}
+          className={`my-4 sticky top-0 z-10 transition-all duration-300 ${atTop ? "rounded-b-xl shadow-lg " : "bg-transparent"
+            }`}
         >
           <CategoryNavigation />
         </div>
@@ -124,7 +123,10 @@ const ProductList = ({ products }) => {
       </div>
 
       {/* Telegram Button */}
-      <TelegramButton />
+      <div>
+
+        <TelegramButton />
+      </div>
     </div>
   );
 };

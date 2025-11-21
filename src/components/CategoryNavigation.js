@@ -41,7 +41,7 @@ const CategoryNavigation = () => {
   };
 
   return (
-    <div className="flex overflow-x-auto space-x-6 px-3 py-3 scrollbar-hide bg-white/30 backdrop-blur-sm" data-aos="flip-up">
+    <div className="flex overflow-x-auto space-x-6 px-3 py-3 scrollbar-hide bg-white/50 backdrop-blur-sm" data-aos="flip-up">
       {menuItems.map((item) => {
         const isActive = activeCategory === item.label;
 

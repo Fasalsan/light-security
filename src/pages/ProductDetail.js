@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { PHONE_NUMBERS } from "../constants";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { IoMdArrowBack } from "react-icons/io";
 import { LiaPhoneVolumeSolid } from "react-icons/lia";
@@ -82,7 +83,11 @@ const ProductDetail = ({ products }) => {
             <div className="text-lg flex items-center gap-3">
               <LiaPhoneVolumeSolid className="text-3xl text-green-600" />
               <span>
-                081632687 / <span>085546050 /</span> <span>0975026561</span>
+                {PHONE_NUMBERS.map((num, index) => (
+                  <span key={index}>
+                    {num} {index < PHONE_NUMBERS.length - 1 ? "/ " : ""}
+                  </span>
+                ))}
               </span>
             </div>
           </div>

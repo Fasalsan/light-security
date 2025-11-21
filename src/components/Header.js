@@ -1,7 +1,6 @@
 // Header.js
 import React from 'react';
-import { SlCallOut } from "react-icons/sl";
-
+import { PHONE_NUMBERS } from "../constants";
 import logos from "../assets/logos.jpg"
 import callIcon from "../assets/icon/call.gif"
 
@@ -16,9 +15,9 @@ const Header = () => {
                 <div className="flex flex-col items-center space-y-1 w-[10%]">
                     <img src={callIcon} alt="Call" />
                 </div>
-                <p className="gradient-text">081632687</p>/
-                <p className="gradient-text">0975026561</p>/
-                <p className="gradient-text">085546050</p>
+                {PHONE_NUMBERS.map((num, index) => (
+                    <p key={index} className="gradient-text">{num}{index < PHONE_NUMBERS.length - 1 ? "/" : ""}</p>
+                ))}
             </div>
 
             {/* Header Section */}
@@ -45,10 +44,10 @@ const Header = () => {
                         <img src={callIcon} alt="Call" />
                     </div>
 
-                    <div className="text-start text-[18px] leading-snug gradient-text">
-                        <p>081632687</p>
-                        <p>0975026561</p>
-                        <p>085546050</p>
+                    <div className="text-start text-[18px] leading-snug gradient-text font-medium text-red-700">
+                        {PHONE_NUMBERS.map((num, index) => (
+                            <p key={index}>{num}</p>
+                        ))}
                     </div>
                 </div>
             </header>
