@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css"; // ✅ Import AOS CSS
@@ -7,7 +7,6 @@ import ProductCard from "../components/ProductCard";
 import CategoryNavigation from "../components/CategoryNavigation";
 import Header from "../components/Header";
 import PromoBanner from "../components/PromoBanner";
-import { PulseLoader } from "react-spinners";
 import TelegramButton from "../components/TelegramButton";
 
 const ProductList = ({ products }) => {
@@ -15,12 +14,11 @@ const ProductList = ({ products }) => {
   const params = new URLSearchParams(location.search);
   const selectedCategory = params.get("category") || "ទាំងអស់";
 
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [atTop, setAtTop] = useState(false);
 
   const productGridRef = useRef(null);
   const stickyRef = useRef(null);
+  const isFirstMount = useRef(true);
 
   // ✅ Initialize AOS once
   useEffect(() => {
@@ -31,18 +29,23 @@ const ProductList = ({ products }) => {
     });
   }, []);
 
-  // ✅ Filter products and trigger AOS refresh
+  // ✅ Filter products using useMemo for immediate updates
+  const filteredProducts = useMemo(() => {
+    return selectedCategory === "ទាំងអស់"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+  }, [selectedCategory, products]);
+
+  // ✅ Handle scrolling and AOS refresh
   useEffect(() => {
-    setLoading(true);
+    // On first mount, do NOT scroll (allows browser to restore scroll position)
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      setTimeout(() => AOS.refresh(), 100);
+      return;
+    }
 
-    const filtered =
-      selectedCategory === "ទាំងអស់"
-        ? products
-        : products.filter((p) => p.category === selectedCategory);
-
-    setFilteredProducts(filtered);
-    setLoading(false);
-
+    // On subsequent category changes, scroll to top of grid
     if (productGridRef.current) {
       productGridRef.current.scrollIntoView({
         behavior: "smooth",
@@ -50,12 +53,8 @@ const ProductList = ({ products }) => {
       });
     }
 
-    // Small delay to ensure DOM is updated before AOS refresh
-    setTimeout(() => {
-      AOS.refresh();
-    }, 100);
-
-  }, [selectedCategory, products]);
+    setTimeout(() => AOS.refresh(), 100);
+  }, [selectedCategory]);
 
   // ✅ Sticky bar shadow when scrolled
   useEffect(() => {
@@ -89,37 +88,32 @@ const ProductList = ({ products }) => {
         </div>
 
         {/* Product Grid */}
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <PulseLoader color="#2563eb" size={10} margin={3} />
-          </div>
-        ) : (
-          <div
-            ref={productGridRef}
-            className="
+        <div
+          ref={productGridRef}
+          className="
+              scroll-mt-32
               grid 
               grid-cols-2 
               sm:grid-cols-2 
               md:grid-cols-3 
               lg:grid-cols-4 
-              gap-3 
+              gap-1
               justify-items-center 
               px-3 
               pb-10
             "
-          >
-            {filteredProducts.map((product, index) => (
-              <div
-                key={product.id}
-                data-aos="zoom-in"
-                data-aos-delay={index * 50} // small delay per card
-                className="w-full flex justify-center"
-              >
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-        )}
+        >
+          {filteredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              data-aos="zoom-in"
+              data-aos-delay={index * 50} // small delay per card
+              className="w-full flex justify-center"
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Telegram Button */}

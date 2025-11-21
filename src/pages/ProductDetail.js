@@ -25,7 +25,7 @@ const ProductDetail = ({ products }) => {
       {/* Back Button */}
       <div>
         <button
-          onClick={() => navigate(`/?category=${category}`)}
+          onClick={() => navigate(-1)}
           className="flex items-center justify-center absolute top-0 p-3 mt-2 ml-2 bg-gray-200 rounded-full shadow-lg cursor-pointer active:scale-95 transition-transform duration-200 ease-in-out"
         >
           <IoMdArrowBack className="text-xl" />
